@@ -2,14 +2,14 @@ const fs = require('fs-extra')
 const inquirer = require('inquirer')
 const path = require('path')
 const chalk = require('chalk')
-const dowloadGit = require('download-git-repo')
+const downloadGit = require('download-git-repo')
 
 async function create (appName, options) {
     // const cwd =
     console.log(appName, options)
     const cwd = options.cwd || process.cwd()
     const targetDir = path.resolve(cwd, appName || '.')
-
+    console.log(targetDir, fs.existsSync(targetDir), '====')
     if (fs.existsSync(targetDir)) {
         if (options.force) {
             await fs.remove(targetDir)
@@ -64,7 +64,12 @@ async function create (appName, options) {
         ]
         const ans = await inquirer.prompt(anoQuestions)
         if (ans.version) {
-            dowloadGit('')
+            downloadGit('direct:https://github.com/ark-c/ark-v-cli.git', 
+                `${appName}`, 
+                {clone: true}, 
+                function(err) {
+                    console.log(err, '=====')}
+                )
         }
     }
 }
