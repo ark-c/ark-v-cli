@@ -1,4 +1,4 @@
-const chalk = require('chalk')
+// const chalk = require('chalk')
 const program = require('commander')
 const version = require('./utils/constants').version
 
@@ -24,14 +24,13 @@ program
 program
     .parse(process.argv)
 
-
-function camelize(str) {
+function camelize (str) {
     return str.replace(/-(\w)/g, (_, c) => c ? c.toUpperCase() : '')
 }
 
 // commander passes the Command object itself as options,
 // extract only actual options into a fresh object.
-function cleanArgs(cmd) {
+function cleanArgs (cmd) {
     const args = {}
     cmd.options.forEach(o => {
         const key = camelize(o.long.replace(/^--/, ''))

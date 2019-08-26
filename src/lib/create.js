@@ -4,8 +4,8 @@ const path = require('path')
 const chalk = require('chalk')
 const dowloadGit = require('download-git-repo')
 
-async function create(appName, options) {
-    // const cwd = 
+async function create (appName, options) {
+    // const cwd =
     console.log(appName, options)
     const cwd = options.cwd || process.cwd()
     const targetDir = path.resolve(cwd, appName || '.')
@@ -40,7 +40,7 @@ async function create(appName, options) {
                 await fs.remove(targetDir)
             }
         }
-    }else {
+    } else {
         const anoQuestions = [
             {
                 type: 'input',

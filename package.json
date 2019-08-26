@@ -1,24 +1,44 @@
 {
-  "name": "ark-v-cli",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "compile": "babel src -d dist",
-    "watch": "npm run compile -- --watch"
-  },
-  "bin": {
-    "ark": "./bin/ark"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-env": "^2.4.1",
-    "chalk": "^2.4.2",
-    "download-git-repo": "^2.0.0",
-    "fs-extra": "^8.1.0",
-    "inquirer": "^6.5.1"
-  },
-  "dependencies": {}
+	"name": "ark-v-cli",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "commonjs",
+	"scripts": {
+		"compile": "babel src -d dist",
+		"watch": "npm run compile -- --watch",
+		"lint": "eslint src --ext .js"
+	},
+	"bin": {
+		"ark": "./bin/ark"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-env": "^2.4.1",
+		"chalk": "^2.4.2",
+		"download-git-repo": "^2.0.0",
+		"eslint": "^6.2.2",
+		"fs-extra": "^8.1.0",
+		"husky": "^3.0.4",
+		"inquirer": "^6.5.1",
+		"lint-staged": "^9.2.4"
+	},
+	"dependencies": {},
+	"engines": {
+		"node": ">= 8.10.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "node script/verifyCommitMsg.js"
+		}
+	},
+	"lint-staged": {
+		"*.{js, vue}": [
+			"npm run lint",
+			"git add"
+		]
+	}
 }
