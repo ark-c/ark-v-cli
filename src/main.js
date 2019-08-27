@@ -14,7 +14,6 @@ program
     .action((name, cmd) => {
         // console.log(chalk.red(` install ${name}`))
         let opt = cleanArgs(cmd)
-        console.log(opt)
         if (process.argv.includes('-g') || process.argv.includes('--git')) { // add git
             opt.forceGit = true
         }
@@ -34,7 +33,6 @@ function cleanArgs (cmd) {
     const args = {}
     cmd.options.forEach(o => {
         const key = camelize(o.long.replace(/^--/, ''))
-        console.log(key, 'key')
         if (typeof cmd[key] !== 'function' && typeof cmd[key] !== 'undefined') {
             args[key] = cmd[key]
         }
