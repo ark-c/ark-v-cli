@@ -22,6 +22,7 @@
 		"deepmerge": "^4.0.0",
 		"download-git-repo": "^2.0.0",
 		"eslint": "^6.2.2",
+		"events": "^3.0.0",
 		"execa": "^2.0.4",
 		"fs-extra": "^8.1.0",
 		"husky": "^3.0.4",
