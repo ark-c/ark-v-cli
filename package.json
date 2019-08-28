@@ -41,7 +41,7 @@
 		}
 	},
 	"lint-staged": {
-		"*.{js, vue}": [
+		"*.{js}": [
 			"npm run lint",
 			"git add"
 		]
